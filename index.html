@@ -1,16 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 <meta charset="UTF-8">
-<title>Unicode Font Generator</title>
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Font Generator</title>
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+background:#0f172a;
+color:white;
+text-align:center;
+padding:30px;
+}
+
+h1{
+margin-bottom:20px;
+}
+
+#inputText{
+width:80%;
+max-width:500px;
+padding:12px;
+font-size:18px;
+border-radius:8px;
+border:none;
+outline:none;
+margin-bottom:30px;
+}
+
+.fontBox{
+background:#1e293b;
+padding:15px;
+margin:10px auto;
+width:80%;
+max-width:600px;
+border-radius:10px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.fontBox span{
+font-size:20px;
+}
+
+button{
+padding:6px 12px;
+border:none;
+background:#3b82f6;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#2563eb;
+}
+
+</style>
+
 </head>
 
 <body>
 
 <h1>Unicode Font Generator</h1>
 
-<input id="inputText" placeholder="Type text here..." />
+<input
+id="inputText"
+type="text"
+placeholder="Type text here..."
+>
 
 <div id="results"></div>
 
