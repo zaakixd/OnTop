@@ -1,51 +1,35 @@
+const normal = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
 const fonts = {
 
-italicSans: {
-A:"𝙏",B:"𝙃",C:"𝙄",D:"𝙎",E:"𝙁",F:"𝙊",G:"𝙉",H:"𝙏"
-},
+bold: "𝐀𝐁𝐂𝐃𝐄𝐅𝐆𝐇𝐈𝐉𝐊𝐋𝐌𝐍𝐎𝐏𝐐𝐑𝐒𝐓𝐔𝐕𝐖𝐗𝐘𝐙𝐚𝐛𝐜𝐝𝐞𝐟𝐠𝐡𝐢𝐣𝐤𝐥𝐦𝐧𝐨𝐩𝐪𝐫𝐬𝐭𝐮𝐯𝐰𝐱𝐲𝐳",
 
-double: {
-T:"𝕋",H:"ℍ",I:"𝕀",S:"𝕊",F:"𝔽",O:"𝕆",N:"ℕ"
-},
+italic: "𝑨𝑩𝑪𝑫𝑬𝑭𝑮𝑯𝑰𝑱𝑲𝑳𝑴𝑵𝑶𝑷𝑸𝑹𝑺𝑻𝑼𝑽𝑾𝑿𝒀𝒁𝒂𝒃𝒄𝒅𝒆𝒇𝒈𝒉𝒊𝒋𝒌𝒍𝒎𝒏𝒐𝒑𝒒𝒓𝒔𝒕𝒖𝒗𝒘𝒙𝒚𝒛",
 
-wide: {
-T:"Ｔ",H:"Ｈ",I:"Ｉ",S:"Ｓ",F:"Ｆ",O:"Ｏ",N:"Ｎ"
-},
+boldSans: "𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇",
 
-smallcaps: {
-t:"ᴛ",h:"ʜ",i:"ɪ",s:"s",f:"ғ",o:"ᴏ",n:"ɴ"
-},
+mono: "𝙰𝙱𝙲𝙳𝙴𝙵𝙶𝙷𝙸𝙹𝙺𝙻𝙼𝙽𝙾𝙿𝚀𝚁𝚂𝚃𝚄𝚅𝚆𝚇𝚈𝚉𝚊𝚋𝚌𝚍𝚎𝚏𝚐𝚑𝚒𝚓𝚔𝚕𝚖𝚗𝚘𝚙𝚚𝚛𝚜𝚝𝚞𝚟𝚠𝚡𝚢𝚣",
 
-mono: {
-T:"𝚃",H:"𝙷",I:"𝙸",S:"𝚂",F:"𝙵",O:"𝙾",N:"𝙽"
-},
+double: "𝔸𝔹ℂ𝔻𝔼𝔽𝔾ℍ𝕀𝕁𝕂𝕃𝕄ℕ𝕆ℙℚℝ𝕊𝕋𝕌𝕍𝕎𝕏𝕐ℤabcdefghijklmnopqrstuvwxyz",
 
-bold: {
-T:"𝐓",H:"𝐇",I:"𝐈",S:"𝐒",F:"𝐅",O:"𝐎",N:"𝐍"
-},
+wide: "ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ",
 
-italic: {
-T:"𝑇",H:"𝐻",I:"𝐼",S:"𝑆",F:"𝐹",O:"𝑂",N:"𝑁"
-},
-
-boldSans: {
-T:"𝗧",H:"𝗛",I:"𝗜",S:"𝗦",F:"𝗙",O:"𝗢",N:"𝗡"
-}
+smallcaps: "ABCDEFGHIJKLMNOPQRSTUVWXYZᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀsᴛᴜᴠᴡxʏᴢ"
 
 };
 
-function convert(text,font){
+function convert(text, font) {
 
-let result="";
+let result = "";
 
-for(let char of text){
+for (let char of text) {
 
-if(font[char]){
-result+=font[char];
-}else if(font[char.toLowerCase()]){
-result+=font[char.toLowerCase()];
-}else{
-result+=char;
+let index = normal.indexOf(char);
+
+if (index !== -1) {
+result += font[index];
+} else {
+result += char;
 }
 
 }
@@ -54,42 +38,43 @@ return result;
 
 }
 
-const input=document.getElementById("inputText");
-const results=document.getElementById("results");
+const input = document.getElementById("inputText");
+const results = document.getElementById("results");
 
-function generate(){
+function generateFonts() {
 
-results.innerHTML="";
-let text=input.value || "THIS FONT";
+results.innerHTML = "";
 
-for(let key in fonts){
+let text = input.value || "THIS FONT";
 
-let styled=convert(text,fonts[key]);
+for (let key in fonts) {
 
-let div=document.createElement("div");
-div.className="fontBox";
+let styled = convert(text, fonts[key]);
 
-let span=document.createElement("span");
-span.innerText=styled;
+let box = document.createElement("div");
+box.className = "fontBox";
 
-let btn=document.createElement("button");
-btn.innerText="Copy";
+let span = document.createElement("span");
+span.innerText = styled;
 
-btn.onclick=()=>{
+let btn = document.createElement("button");
+btn.innerText = "Copy";
+
+btn.onclick = () => {
 navigator.clipboard.writeText(styled);
-btn.innerText="Copied!";
-setTimeout(()=>btn.innerText="Copy",1000);
+btn.innerText = "Copied!";
+setTimeout(() => btn.innerText = "Copy", 1000);
 };
 
-div.appendChild(span);
-div.appendChild(btn);
+box.appendChild(span);
+box.appendChild(btn);
 
-results.appendChild(div);
-
-}
+results.appendChild(box);
 
 }
 
-input.addEventListener("input",generate);
+}
 
-generate();
+input.addEventListener("input", generateFonts);
+
+generateFonts();
